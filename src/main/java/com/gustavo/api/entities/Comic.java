@@ -1,9 +1,7 @@
 package com.gustavo.api.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -42,7 +40,7 @@ public class Comic implements Serializable {
 	@JoinTable(name = "tb_comic_user",
 		joinColumns = @JoinColumn(name = "comic_id"),
 	    inverseJoinColumns = @JoinColumn(name = "user_id"))	
-	private List<User> users = new ArrayList<>();
+	private Set<User> users = new HashSet<>();
 	
 	public Comic() {
 		
@@ -81,7 +79,7 @@ public class Comic implements Serializable {
 		return creators;
 	}
 
-	public List<User> getUsers() {
+	public Set<User> getUsers() {
 		return users;
 	}
 
@@ -109,7 +107,7 @@ public class Comic implements Serializable {
 		this.creators = creators;
 	}
 
-	public void setUsers(List<User> users) {
+	public void setUsers(Set<User> users) {
 		this.users = users;
 	}
 

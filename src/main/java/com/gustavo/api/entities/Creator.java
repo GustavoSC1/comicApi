@@ -1,8 +1,8 @@
 package com.gustavo.api.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,7 +25,7 @@ public class Creator implements Serializable {
 	
 	@JsonIgnore
 	@ManyToMany(mappedBy = "creators")
-	private List<Comic> comics = new ArrayList<>();
+	private Set<Comic> comics = new HashSet<>();
 	
 	public Creator() {
 		
@@ -45,7 +45,7 @@ public class Creator implements Serializable {
 		return name;
 	}
 
-	public List<Comic> getComics() {
+	public Set<Comic> getComics() {
 		return comics;
 	}
 
@@ -57,7 +57,7 @@ public class Creator implements Serializable {
 		this.name = name;
 	}
 
-	public void setComics(List<Comic> comics) {
+	public void setComics(Set<Comic> comics) {
 		this.comics = comics;
 	}
 
