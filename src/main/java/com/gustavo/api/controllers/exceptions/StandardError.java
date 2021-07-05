@@ -19,7 +19,7 @@ public class StandardError implements Serializable {
 		this.message = message;
 		this.path = path;
 	}
-
+	
 	public Long getTimestamp() {
 		return timestamp;
 	}

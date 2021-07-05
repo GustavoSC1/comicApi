@@ -13,4 +13,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	@Transactional(readOnly=true)
 	User findByEmail(String email);
 	
+	@Transactional(readOnly=true)
+	User findByCpf(String cpf);
+	
 }

@@ -45,7 +45,7 @@ public class ComicService {
 	
 	private WebClient webClient = WebClient.builder().baseUrl(baseUrl)
 			.defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-			.build();;
+			.build();
 		
 	public Comic find(Integer id) {
 		Optional<Comic> obj = comicRepository.findById(id);

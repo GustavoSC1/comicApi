@@ -30,22 +30,6 @@ public class UserDTO implements Serializable {
 		this.cpf = user.getCpf();
 		this.birthDate = user.getBirthDate();
 	}
-
-	//getters e setters omitidos
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	public Integer getId() {
 		return id;

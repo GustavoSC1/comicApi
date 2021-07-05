@@ -6,7 +6,11 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.br.CPF;
 
+import com.gustavo.api.services.validation.UserInsert;
+
+@UserInsert
 public class UserNewDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -19,6 +23,7 @@ public class UserNewDTO implements Serializable {
 	private String email;
 	
 	@NotEmpty(message="Preenchimento obrigatório")
+	@CPF(message="CPF inválido")
 	private String cpf;
 	
 	@NotEmpty(message="Preenchimento obrigatório")

@@ -18,6 +18,7 @@ public class UserService {
 	
 	public User find(Integer id) {
 		Optional<User> obj = userRepository.findById(id);
+		
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 		"User não encontrado! Id: " + id + ", Tipo: " + User.class.getName()));
 	}
