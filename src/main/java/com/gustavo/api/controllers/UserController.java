@@ -32,19 +32,19 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@GetMapping(value="{id}")
-	public ResponseEntity<UserDTO> find(@PathVariable Integer id) {
-		User user = userService.find(id);	
-		UserDTO userDto = toUserDTO(user);
-		return ResponseEntity.ok().body(userDto);
-	}
-	
 	@PostMapping()
 	public ResponseEntity<Void> insert(@Valid @RequestBody UserNewDTO dto) {
 		User usuario = userService.insert(dto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(usuario.getId()).toUri();		
 		return ResponseEntity.created(uri).build();
+	}
+	
+	@GetMapping(value="{id}")
+	public ResponseEntity<UserDTO> find(@PathVariable Integer id) {
+		User user = userService.find(id);	
+		UserDTO userDto = toUserDTO(user);
+		return ResponseEntity.ok().body(userDto);
 	}
 	
 	private UserDTO toUserDTO(User user) {
