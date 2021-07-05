@@ -23,9 +23,15 @@ public class UserService {
 	}
 	
 	public User insert(UserNewDTO objDto) {
-		User user = new User(null, objDto.getName(), objDto.getEmail(), objDto.getCpf(), objDto.getBirthDate());
+		User user = new User(null, objDto.getName(), objDto.getEmail(), 
+				objDto.getCpf(), objDto.getBirthDate());
+		
 		user = userRepository.save(user);
 		return user;
 	}	
 
 }
+
+
+
+

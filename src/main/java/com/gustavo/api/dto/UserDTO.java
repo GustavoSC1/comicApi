@@ -31,6 +31,22 @@ public class UserDTO implements Serializable {
 		this.birthDate = user.getBirthDate();
 	}
 
+	//getters e setters omitidos
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public Integer getId() {
 		return id;
 	}

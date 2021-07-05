@@ -7,8 +7,9 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -18,7 +19,6 @@ import com.gustavo.api.dto.ComicNewDTO;
 import com.gustavo.api.entities.Comic;
 import com.gustavo.api.entities.Creator;
 import com.gustavo.api.repositories.ComicRepository;
-import com.gustavo.api.services.exceptions.ApiAttributeNullException;
 import com.gustavo.api.services.utils.CreatorSummary;
 import com.gustavo.api.services.utils.MarvelAPIModel;
 
@@ -33,6 +33,9 @@ public class ComicService {
 	
 	@Autowired
 	private CreatorService creatorService;
+		
+	@Value("${marvel.baseUrl}")
+	private String baseUrl;
 			
 	@Value("${marvel.public_key}")
 	private String publicKey;
@@ -40,8 +43,9 @@ public class ComicService {
 	@Value("${marvel.private_key}")
 	private String privateKey;
 	
-	@Autowired
-	private WebClient webClient;
+	private WebClient webClient = WebClient.builder().baseUrl(baseUrl)
+			.defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+			.build();;
 		
 	public Comic find(Integer id) {
 		Optional<Comic> obj = comicRepository.findById(id);
@@ -80,12 +84,6 @@ public class ComicService {
 				}
 			}
 			
-			if(comic.getId().equals(null) || comic.getTitle().equals(null) || comic.getIsbn().equals(null) || 
-					comic.getDescription().equals(null) || comic.getPrice().equals(null) || comic.getCreators().isEmpty()) {
-				throw new ApiAttributeNullException("Não é possível cadastrar essa Comic porque ela não possui todos os dados "
-						+ "obrigatórios");
-			}
-			
 		}
 		return comic;
 	}
@@ -96,7 +94,8 @@ public class ComicService {
 		
 		Mono<MarvelAPIModel> monoComic = this.webClient
 				.method(HttpMethod.GET)
-				.uri("/v1/public/comics/{idComicMarvel}?ts={timeStemp}&apikey={publicKey}&hash={hash}", idComicMarvel, timeStemp, publicKey, hash)
+				.uri("/v1/public/comics/{idComicMarvel}?ts={timeStemp}&apikey={publicKey}&hash={hash}", 
+						idComicMarvel, timeStemp, publicKey, hash)
 				.retrieve()
 				.bodyToMono(MarvelAPIModel.class);
 		

@@ -40,7 +40,7 @@ public class ComicDTO implements Serializable {
 			this.price = newValue.floatValue();			
 		}
 	}
-
+		
 	public Integer getId() {
 		return id;
 	}

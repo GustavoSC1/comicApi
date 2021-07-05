@@ -7,8 +7,6 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 public class UserNewDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -23,7 +21,7 @@ public class UserNewDTO implements Serializable {
 	@NotEmpty(message="Preenchimento obrigatório")
 	private String cpf;
 	
-	@JsonFormat(pattern="dd/MM/yyyy")
+	@NotEmpty(message="Preenchimento obrigatório")
 	private LocalDate birthDate;
 	
 	public UserNewDTO() {
