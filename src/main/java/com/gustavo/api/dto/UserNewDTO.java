@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.br.CPF;
@@ -26,13 +27,13 @@ public class UserNewDTO implements Serializable {
 	@CPF(message="CPF inválido")
 	private String cpf;
 	
-	@NotEmpty(message="Preenchimento obrigatório")
+	@NotNull(message="Preenchimento obrigatório")
 	private LocalDate birthDate;
 	
 	public UserNewDTO() {
 		
 	}
-
+	
 	public String getName() {
 		return name;
 	}

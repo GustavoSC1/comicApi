@@ -20,6 +20,8 @@ public class AuthorDTO implements Serializable {
 		this.name = author.getName();
 	}
 	
+	// getters e setters omitidos
+	
 	public Integer getId() {
 		return id;
 	}

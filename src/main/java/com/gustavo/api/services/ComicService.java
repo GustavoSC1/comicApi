@@ -7,9 +7,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -34,19 +32,15 @@ public class ComicService {
 	
 	@Autowired
 	private AuthorService authorService;
-		
-	@Value("${marvel.baseUrl}")
-	private String baseUrl;
-			
+					
 	@Value("${marvel.public_key}")
 	private String publicKey;
 	
 	@Value("${marvel.private_key}")
 	private String privateKey;
 	
-	private WebClient webClient = WebClient.builder().baseUrl(baseUrl)
-			.defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-			.build();
+	@Autowired
+	private WebClient webClient;
 		
 	public Comic find(Integer id) {
 		Optional<Comic> obj = comicRepository.findById(id);
@@ -85,6 +79,7 @@ public class ComicService {
 				}
 			}
 			
+			//verificação dos dados
 			if(comic.getId().equals(null) || comic.getTitle().equals(null) || comic.getIsbn().equals(null) || 
 					comic.getDescription().equals(null) || comic.getPrice().equals(null) || comic.getAuthors().isEmpty()) {
 				throw new ApiAttributeNullException("Não é possível cadastrar essa Comic porque ela não possui todos os dados "
@@ -98,7 +93,7 @@ public class ComicService {
 	public MarvelAPIModel getComicByApi(Integer idComicMarvel) {
 		String timeStemp = String.valueOf((int)(System.currentTimeMillis() / 1000));
 		String hash = getHash(timeStemp, privateKey, publicKey);
-		
+		System.out.println("Aqui 1");
 		Mono<MarvelAPIModel> monoComic = this.webClient
 				.method(HttpMethod.GET)
 				.uri("/v1/public/comics/{idComicMarvel}?ts={timeStemp}&apikey={publicKey}&hash={hash}", 
@@ -107,7 +102,7 @@ public class ComicService {
 				.bodyToMono(MarvelAPIModel.class);
 		
 		MarvelAPIModel comic = monoComic.block();
-		
+		System.out.println("Aqui 2");
 		return comic;
 	}
 	
