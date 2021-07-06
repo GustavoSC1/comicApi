@@ -12,9 +12,13 @@ import javax.validation.Payload;
 @Target({ ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 public @interface UserInsert {
+	//mensagem emitida em caso de erro na validação
 	String message() default "Erro de validação";
 	
+	//para utilização de grupo de validações de Bean Validation
 	Class<?>[] groups() default {};
-
+	
+	//configura o grau do erro de validação
 	Class<? extends Payload>[] payload() default {};
 }
+

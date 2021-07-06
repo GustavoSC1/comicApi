@@ -17,10 +17,11 @@ import reactor.core.publisher.Mono;
 
 import com.gustavo.api.dto.ComicNewDTO;
 import com.gustavo.api.entities.Comic;
-import com.gustavo.api.entities.Creator;
+import com.gustavo.api.entities.Author;
 import com.gustavo.api.repositories.ComicRepository;
 import com.gustavo.api.services.utils.CreatorSummary;
 import com.gustavo.api.services.utils.MarvelAPIModel;
+import com.gustavo.api.services.exceptions.ApiAttributeNullException;
 
 @Service
 public class ComicService {
@@ -32,7 +33,7 @@ public class ComicService {
 	private UserService userService;
 	
 	@Autowired
-	private CreatorService creatorService;
+	private AuthorService authorService;
 		
 	@Value("${marvel.baseUrl}")
 	private String baseUrl;
@@ -76,12 +77,18 @@ public class ComicService {
 			comic.getUsers().add(userService.find(objDto.getIdUser()));
 			
 			for (CreatorSummary creator: marvelModel.getData().getResults().get(0).getCreators().getItems()) {
-				Creator obj = creatorService.findByName(creator.getName());				
+				Author obj = authorService.findByName(creator.getName());				
 				if(obj==null) {				
-					comic.getCreators().add(new Creator(null, creator.getName()));					
+					comic.getAuthors().add(new Author(null, creator.getName()));					
 				} else {
-					comic.getCreators().add(obj);
+					comic.getAuthors().add(obj);
 				}
+			}
+			
+			if(comic.getId().equals(null) || comic.getTitle().equals(null) || comic.getIsbn().equals(null) || 
+					comic.getDescription().equals(null) || comic.getPrice().equals(null) || comic.getAuthors().isEmpty()) {
+				throw new ApiAttributeNullException("Não é possível cadastrar essa Comic porque ela não possui todos os dados "
+						+ "obrigatórios");
 			}
 			
 		}

@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.gustavo.api.dto.ComicDTO;
-import com.gustavo.api.dto.CreatorDTO;
+import com.gustavo.api.dto.AuthorDTO;
 import com.gustavo.api.dto.UserDTO;
 import com.gustavo.api.dto.UserNewDTO;
 import com.gustavo.api.entities.Comic;
-import com.gustavo.api.entities.Creator;
+import com.gustavo.api.entities.Author;
 import com.gustavo.api.entities.User;
 import com.gustavo.api.services.UserService;
 
@@ -53,12 +53,12 @@ public class UserController {
 			
 			for(Comic comic: user.getComics()) {
 				ComicDTO comicDto = new ComicDTO(comic);
-				Set<CreatorDTO> creators = new HashSet<>();									
-				for(Creator creator: comic.getCreators()) {
-					CreatorDTO creatorDto = new CreatorDTO(creator);
-					creators.add(creatorDto);
+				Set<AuthorDTO> authors = new HashSet<>();									
+				for(Author author: comic.getAuthors()) {
+					AuthorDTO authorDto = new AuthorDTO(author);
+					authors.add(authorDto);
 				}
-				comicDto.setCreators(creators);	
+				comicDto.setAuthors(authors);	
 				comicsDto.add(comicDto);
 			}
 			

@@ -14,8 +14,8 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "TB_CREATOR")
-public class Creator implements Serializable {
+@Table(name = "TB_AUTHOR")
+public class Author implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -24,14 +24,14 @@ public class Creator implements Serializable {
 	private String name;
 	
 	@JsonIgnore
-	@ManyToMany(mappedBy = "creators")
+	@ManyToMany(mappedBy = "authors")
 	private Set<Comic> comics = new HashSet<>();
 	
-	public Creator() {
+	public Author() {
 		
 	}
 
-	public Creator(Integer id, String name) {
+	public Author(Integer id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -77,7 +77,7 @@ public class Creator implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Creator other = (Creator) obj;
+		Author other = (Author) obj;
 		if (name == null) {
 			if (other.name != null)
 				return false;

@@ -2,22 +2,22 @@ package com.gustavo.api.dto;
 
 import java.io.Serializable;
 
-import com.gustavo.api.entities.Creator;
+import com.gustavo.api.entities.Author;
 
-public class CreatorDTO implements Serializable {
+public class AuthorDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Integer id;
 	private String name;
 	
-	public CreatorDTO() {
+	public AuthorDTO() {
 		
 	}
 	
-	public CreatorDTO(Creator creator) {
+	public AuthorDTO(Author author) {
 		super();
-		this.id = creator.getId();
-		this.name = creator.getName();
+		this.id = author.getId();
+		this.name = author.getName();
 	}
 	
 	public Integer getId() {

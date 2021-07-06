@@ -4,12 +4,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.gustavo.api.entities.Creator;
+import com.gustavo.api.entities.Author;
 
 @Repository
-public interface CreatorRepository extends JpaRepository<Creator, Integer> {
+public interface AuthorRepository extends JpaRepository<Author, Integer> {
 	
 	@Transactional(readOnly=true)
-	Creator findByName(String name);
+	Author findByName(String name);
 
 }

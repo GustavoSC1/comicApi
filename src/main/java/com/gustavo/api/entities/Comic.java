@@ -30,10 +30,10 @@ public class Comic implements Serializable {
 	private String description;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "tb_comic_creator",
+	@JoinTable(name = "tb_comic_author",
 		joinColumns = @JoinColumn(name = "comic_id"),
-	    inverseJoinColumns = @JoinColumn(name = "creator_id"))
-	private Set<Creator> creators = new HashSet<>();
+	    inverseJoinColumns = @JoinColumn(name = "author_id"))
+	private Set<Author> authors = new HashSet<>();
 	
 	@JsonIgnore
 	@ManyToMany
@@ -75,8 +75,8 @@ public class Comic implements Serializable {
 		return description;
 	}
 
-	public Set<Creator> getCreators() {
-		return creators;
+	public Set<Author> getAuthors() {
+		return authors;
 	}
 
 	public Set<User> getUsers() {
@@ -103,8 +103,8 @@ public class Comic implements Serializable {
 		this.description = description;
 	}
 
-	public void setCreators(Set<Creator> creators) {
-		this.creators = creators;
+	public void setAuthors(Set<Author> authors) {
+		this.authors = authors;
 	}
 
 	public void setUsers(Set<User> users) {

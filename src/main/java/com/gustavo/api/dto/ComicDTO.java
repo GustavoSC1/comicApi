@@ -18,7 +18,7 @@ public class ComicDTO implements Serializable {
 	private String description;
 	private boolean descontoAtivo;
 	
-	private Set<CreatorDTO> creators = new HashSet<>();
+	private Set<AuthorDTO> authors = new HashSet<>();
 	
 	public ComicDTO() {
 		
@@ -65,8 +65,8 @@ public class ComicDTO implements Serializable {
 		return descontoAtivo;
 	}
 
-	public Set<CreatorDTO> getCreators() {
-		return creators;
+	public Set<AuthorDTO> getAuthors() {
+		return authors;
 	}
 
 	public void setId(Integer id) {
@@ -89,8 +89,8 @@ public class ComicDTO implements Serializable {
 		this.description = description;
 	}
 
-	public void setCreators(Set<CreatorDTO> creators) {
-		this.creators = creators;
+	public void setAuthors(Set<AuthorDTO> authors) {
+		this.authors = authors;
 	}
 	
 	private boolean checkDiscount() {
