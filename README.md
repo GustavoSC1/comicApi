@@ -9,10 +9,15 @@ Obs: A integração com a API da MARVEL foi feita usando o Spring-Cloud-Feign.
 A API também calcula um desconto no preço do Comic baseado no último número do ISBN e no dia da semana que o usuário está fazendo a requisição. 
 
 1.) Dia do desconto deste Comics, baseado no último número do ISBN do comics, considerando as condicionais:
+
 Final 0-1: segunda-feira
+
 Final 2-3: terça-feira
+
 Final 4-5: quarta-feira
+
 Final 6-7: quinta-feira
+
 Final 8-9: sexta-feira
 
 2.) Também existe um atributo de desconto ativo, onde a data atual do sistema é comparada com as condicionais anteriores, onde, quando for o dia ativo do desconto retorna true, caso contrário, false.
