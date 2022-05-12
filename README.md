@@ -15,12 +15,12 @@ Final 4-5: quarta-feira
 Final 6-7: quinta-feira
 Final 8-9: sexta-feira
 
-2.) Também devemos criar um atributo de desconto ativo, onde nós devemos pegar a data atual do sistema e comparar com as condicionais anteriores, onde, quando for o dia ativo do desconto retornar true, caso contrário, false.
+2.) Também existe um atributo de desconto ativo, onde a data atual do sistema é comparada com as condicionais anteriores, onde, quando for o dia ativo do desconto retorna true, caso contrário, false.
 
 Exemplo A: hoje é segunda-feira, o Comics tem o ISBN XXXXXXXX1, ou seja, seu desconto será às segundas-feiras e o atributo de desconto ativo será TRUE.
 Exemplo B: hoje é quinta-feira, o Comics tem o ISBN XXXXXXXX1, ou seja, seu desconto será às segundas-feiras e o atributo de desconto ativo será FALSE.
 
-3.) Caso seja o dia de desconto do livro, o preço a ser exibido deve aparecer com 10% a menos que o valor retornado pela API da MARVEL.
+3.) Caso seja o dia de desconto do livro, o preço a ser exibido aparece com 10% a menos que o valor retornado pela API da MARVEL.
 
 # Autor
 
