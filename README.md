@@ -1,4 +1,5 @@
 # Comics API
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/GustavoSC1/comicApi/blob/main/LICENCE) 
 
 # Sobre o projeto
 
@@ -26,6 +27,18 @@ Exemplo A: hoje é segunda-feira, o Comics tem o ISBN XXXXXXXX1, ou seja, seu de
 Exemplo B: hoje é quinta-feira, o Comics tem o ISBN XXXXXXXX1, ou seja, seu desconto será às segundas-feiras e o atributo de desconto ativo será FALSE.
 
 3.) Caso seja o dia de desconto do livro, o preço a ser exibido aparece com 10% a menos que o valor retornado pela API da MARVEL.
+
+## Modelo conceitual
+![Modelo Conceitual](https://ik.imagekit.io/gustavosc/Untitled_Diagram.drawio_eNt8_EXu9.png?ik-sdk-version=javascript-1.4.3&updatedAt=1656848888448)
+
+# Tecnologias utilizadas
+## Back end
+- [Java](https://www.oracle.com/java/)
+- [Spring Boot](https://spring.io/projects/spring-boot)
+- [Spring Data JPA](https://spring.io/projects/spring-data-jpa)
+- [Spring Cloud OpenFeign](https://spring.io/projects/spring-cloud-openfeign)
+- [Maven](https://maven.apache.org/)
+- [swagger](https://swagger.io/)
 
 # Autor
 
