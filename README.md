@@ -39,6 +39,7 @@ Exemplo B: hoje é quinta-feira, o Comics tem o ISBN XXXXXXXX1, ou seja, seu des
 - [Spring Cloud OpenFeign](https://spring.io/projects/spring-cloud-openfeign)
 - [Maven](https://maven.apache.org/)
 - [swagger](https://swagger.io/)
+- [H2](https://www.h2database.com/html/main.html)
 
 # Autor
 
